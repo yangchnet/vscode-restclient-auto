@@ -50,6 +50,8 @@ export async function activate(context: ExtensionContext) {
             window.showErrorMessage(error.message);
         });
     }));
+    // TODO: 增加一个命令，用于运行当前文档
+    context.subscriptions.push(commands.registerCommand('rest-client.doc-request', (document: TextDocument, range: Range) => requestController.run(range)));
 
     const documentSelector = [
         { language: 'http', scheme: '*' }
